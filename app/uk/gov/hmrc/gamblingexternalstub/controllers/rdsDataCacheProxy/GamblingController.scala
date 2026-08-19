@@ -679,6 +679,49 @@ class GamblingController @Inject() (
     }
   }
 
+
+  def getPremisesDetails(mgdRegNumber: String): Action[AnyContent] = Action { _ =>
+
+    mgdRegNumber match {
+
+      case "invalid" => invalidResponse
+
+      case "error" => errorResponse
+
+      case "XGM00000001763" =>
+        Ok(
+          Json.toJson(
+            PremisesDetails(
+              mgdRegNumber = "XGM00000001763",
+              address1 = Some("Flat 1"),
+              address2 = Some("10 Market Calle"),
+              address3 = Some("Madrid"),
+              address4 = None,
+              postcode = None,
+              Some(fixedDate),
+              pTotalRows = Some(5000)
+            )
+          )
+        )
+
+      case reg =>
+        Ok(
+          Json.toJson(
+            PremisesDetails(
+              mgdRegNumber = reg,
+              address1 = Some("Flat 1"),
+              address2 = Some("10 Market Road"),
+              address3 = Some("Felling"),
+              address4 = Some("Gateshead"),
+              postcode = Some("NE8 1ZZ"),
+              Some(fixedDate),
+              pTotalRows = Some(5000)
+            )
+          )
+        )
+    }
+  }
+
   private val fixedDate = LocalDate.parse("2026-01-01")
 
   private val SoleProprietor = 1

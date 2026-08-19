@@ -584,4 +584,33 @@ class GamblingControllerSpec extends AnyWordSpec with Matchers with SpecBase {
     }
   }
 
+  "GamblingController#getPremisesDetails" should {
+
+    "return address1 for XGM00000001761" in {
+      val result = controller.getPremisesDetails("XGM00000001763")(FakeRequest())
+
+      status(result) shouldBe OK
+      (contentAsJson(result) \ "address1").as[String] shouldBe "Flat 1"
+    }
+
+    "return postcode" in {
+      val result = controller.getPremisesDetails("GAM999")(FakeRequest())
+
+      status(result) shouldBe OK
+      (contentAsJson(result) \ "postcode").as[String] shouldBe "NE8 1ZZ"
+    }
+
+    "return BAD_REQUEST for invalid" in {
+      val result = controller.getPremisesDetails("invalid")(FakeRequest())
+
+      status(result) shouldBe BAD_REQUEST
+    }
+
+    "return INTERNAL_SERVER_ERROR for error" in {
+      val result = controller.getPremisesDetails("error")(FakeRequest())
+
+      status(result) shouldBe INTERNAL_SERVER_ERROR
+    }
+  }
+
 }
