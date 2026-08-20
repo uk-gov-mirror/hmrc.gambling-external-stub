@@ -56,7 +56,7 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
               address2     = Some("20 Market Calle"),
               address3     = Some("Barcelona"),
               address4     = None,
-              postcode     = None,
+              postcode     = Some("08001"),
               Some(fixedDate)
             ),
             PremisesDetails(
@@ -65,7 +65,7 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
               address2     = Some("10 Market Calle"),
               address3     = Some("Madrid"),
               address4     = None,
-              postcode     = None,
+              postcode     = Some("28058"),
               Some(fixedDate)
             )
           )
