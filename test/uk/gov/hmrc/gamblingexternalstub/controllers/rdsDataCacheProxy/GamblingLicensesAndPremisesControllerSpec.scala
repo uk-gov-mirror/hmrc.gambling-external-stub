@@ -23,7 +23,6 @@ import play.api.test.FakeRequest
 import play.api.test.Helpers.*
 import uk.gov.hmrc.gamblingexternalstub.base.SpecBase
 import uk.gov.hmrc.gamblingexternalstub.models.*
-import uk.gov.hmrc.gamblingexternalstub.models.BusinessType.SoleProprietor
 
 import java.time.LocalDate
 
@@ -37,7 +36,7 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
 
   "GamblingController#getPremisesDetails" should {
 
-    "return total rows for XGM00000001761" in {
+    "return total rows for XGM00000001763" in {
       val result = controller.getPremisesDetails("XGM00000001763")(FakeRequest())
 
       status(result) shouldBe OK
