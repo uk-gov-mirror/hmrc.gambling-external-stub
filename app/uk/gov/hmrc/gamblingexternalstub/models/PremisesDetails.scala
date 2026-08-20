@@ -28,9 +28,17 @@ case class PremisesDetails(
   address4: Option[String],
   postcode: Option[String],
   systemDate: Option[LocalDate],
-  pTotalRows: Option[Int]
 )
+
+case class Response(
+                     totalRows: Option[Int],
+                     premises: Seq[PremisesDetails]
+                   )
 
 object PremisesDetails {
   implicit val format: OFormat[PremisesDetails] = Json.format[PremisesDetails]
+}
+
+object Response {
+  implicit val format: OFormat[Response] = Json.format[Response]
 }

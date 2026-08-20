@@ -36,7 +36,6 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address4     = Some("address4"),
         postcode     = Some("L1 8YL"),
         systemDate   = Some(LocalDate.now()),
-        pTotalRows = Some(500)
       )
 
       val json = Json.toJson(model)
@@ -49,7 +48,6 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         "address4"     -> "address4",
         "postcode"     -> "L1 8YL",
         "systemDate"   -> LocalDate.now(),
-        "pTotalRows"   -> 500
       )
     }
 
@@ -63,7 +61,6 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         "address4"     -> "address4",
         "postcode"     -> "L1 8YL",
         "systemDate"   -> LocalDate.now(),
-        "pTotalRows"   -> 500
       )
 
       val result = json.as[PremisesDetails]
@@ -76,7 +73,6 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address4     = Some("address4"),
         postcode     = Some("L1 8YL"),
         systemDate   = Some(LocalDate.now()),
-        pTotalRows = Some(500)
       )
     }
 
@@ -96,7 +92,6 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address4     = None,
         postcode     = None,
         systemDate   = None,
-        pTotalRows = None
       )
     }
   }
