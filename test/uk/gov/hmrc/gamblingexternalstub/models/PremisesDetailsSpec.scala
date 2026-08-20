@@ -35,7 +35,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address3     = Some("address3"),
         address4     = Some("address4"),
         postcode     = Some("L1 8YL"),
-        systemDate   = Some(LocalDate.now()),
+        systemDate   = Some(LocalDate.now())
       )
 
       val json = Json.toJson(model)
@@ -47,7 +47,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         "address3"     -> "address3",
         "address4"     -> "address4",
         "postcode"     -> "L1 8YL",
-        "systemDate"   -> LocalDate.now(),
+        "systemDate"   -> LocalDate.now()
       )
     }
 
@@ -60,7 +60,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         "address3"     -> "address3",
         "address4"     -> "address4",
         "postcode"     -> "L1 8YL",
-        "systemDate"   -> LocalDate.now(),
+        "systemDate"   -> LocalDate.now()
       )
 
       val result = json.as[PremisesDetails]
@@ -72,7 +72,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address3     = Some("address3"),
         address4     = Some("address4"),
         postcode     = Some("L1 8YL"),
-        systemDate   = Some(LocalDate.now()),
+        systemDate   = Some(LocalDate.now())
       )
     }
 
@@ -91,7 +91,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address3     = None,
         address4     = None,
         postcode     = None,
-        systemDate   = None,
+        systemDate   = None
       )
     }
   }

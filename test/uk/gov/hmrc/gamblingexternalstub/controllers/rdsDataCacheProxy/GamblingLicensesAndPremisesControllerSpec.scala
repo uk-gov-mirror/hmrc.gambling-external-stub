@@ -33,13 +33,12 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
 
   private val fixedDate = LocalDate.parse("2026-01-01")
 
-
   "GamblingController#getPremisesDetails" should {
 
     "return total rows for XGM00000001763" in {
       val result = controller.getPremisesDetails("XGM00000001763")(FakeRequest())
 
-      status(result) shouldBe OK
+      status(result)                                shouldBe OK
       (contentAsJson(result) \ "totalRows").as[Int] shouldBe 1000
     }
 
@@ -53,21 +52,21 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
           premises = Seq(
             PremisesDetails(
               mgdRegNumber = "GAM999",
-              address1 = Some("Flat 55"),
-              address2 = Some("20 Market Calle"),
-              address3 = Some("Barcelona"),
-              address4 = None,
-              postcode = None,
-              Some(fixedDate),
+              address1     = Some("Flat 55"),
+              address2     = Some("20 Market Calle"),
+              address3     = Some("Barcelona"),
+              address4     = None,
+              postcode     = None,
+              Some(fixedDate)
             ),
             PremisesDetails(
               mgdRegNumber = "GAM999",
-              address1 = Some("Flat 1"),
-              address2 = Some("10 Market Calle"),
-              address3 = Some("Madrid"),
-              address4 = None,
-              postcode = None,
-              Some(fixedDate),
+              address1     = Some("Flat 1"),
+              address2     = Some("10 Market Calle"),
+              address3     = Some("Madrid"),
+              address4     = None,
+              postcode     = None,
+              Some(fixedDate)
             )
           )
         )

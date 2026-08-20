@@ -25,7 +25,7 @@ import uk.gov.hmrc.play.bootstrap.backend.controller.BackendController
 import java.time.LocalDate
 import javax.inject.Inject
 
-class GamblingLicensesAndPremisesController @Inject()(
+class GamblingLicensesAndPremisesController @Inject() (
   cc: ControllerComponents
 ) extends BackendController(cc)
     with Logging {
@@ -46,12 +46,12 @@ class GamblingLicensesAndPremisesController @Inject()(
               premises = Seq(
                 PremisesDetails(
                   mgdRegNumber = "XGM00000001763",
-                  address1 = Some("Flat 55"),
-                  address2 = Some("10 Random Road"),
-                  address3 = Some("Gateshead"),
-                  address4 = None,
-                  postcode = None,
-                  Some(fixedDate),
+                  address1     = Some("Flat 55"),
+                  address2     = Some("10 Random Road"),
+                  address3     = Some("Gateshead"),
+                  address4     = None,
+                  postcode     = None,
+                  Some(fixedDate)
                 )
               )
             )
@@ -77,21 +77,21 @@ class GamblingLicensesAndPremisesController @Inject()(
               premises = Seq(
                 PremisesDetails(
                   mgdRegNumber = mgdRegNumber,
-                  address1 = Some("Flat 55"),
-                  address2 = Some("20 Market Calle"),
-                  address3 = Some("Barcelona"),
-                  address4 = None,
-                  postcode = None,
-                  Some(fixedDate),
+                  address1     = Some("Flat 55"),
+                  address2     = Some("20 Market Calle"),
+                  address3     = Some("Barcelona"),
+                  address4     = None,
+                  postcode     = None,
+                  Some(fixedDate)
                 ),
                 PremisesDetails(
                   mgdRegNumber = mgdRegNumber,
-                  address1 = Some("Flat 1"),
-                  address2 = Some("10 Market Calle"),
-                  address3 = Some("Madrid"),
-                  address4 = None,
-                  postcode = None,
-                  Some(fixedDate),
+                  address1     = Some("Flat 1"),
+                  address2     = Some("10 Market Calle"),
+                  address3     = Some("Madrid"),
+                  address4     = None,
+                  postcode     = None,
+                  Some(fixedDate)
                 )
               )
             )
