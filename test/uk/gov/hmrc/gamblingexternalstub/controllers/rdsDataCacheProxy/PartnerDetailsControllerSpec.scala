@@ -30,27 +30,27 @@ class PartnerDetailsControllerSpec extends AnyWordSpec with Matchers with SpecBa
 
   "PartnerDetailsController#getPartnerDetails" should {
 
-    "return full partner details for XGM00000001761" in {
-      val result = controller.getPartnerDetails("MGD", "XGM00000001761")(FakeRequest())
+    "return full partner details for XPM00000000600" in {
+      val result = controller.getPartnerDetails("MGD", "XPM00000000600")(FakeRequest())
 
       status(result) shouldBe OK
 
       val json = contentAsJson(result)
 
-      (json \ "partners" \ 0 \ "mgdRegNumber").as[String]              shouldBe "XGM00000001761"
+      (json \ "partners" \ 0 \ "mgdRegNumber").as[String]              shouldBe "XPM00000000600"
       (json \ "partners" \ 0 \ "businessPartnerNumber").asOpt[String]  shouldBe Some("0100049899")
       (json \ "partners" \ 0 \ "businessName").as[String]              shouldBe "Partner1"
       (json \ "partners" \ 0 \ "countryOfIncorporation").asOpt[String] shouldBe Some("countryOfIncorporation")
     }
 
-    "return partial partner details for XGM00000001762" in {
-      val result = controller.getPartnerDetails("mGd", " xGM00000001762 ")(FakeRequest())
+    "return partial partner details for XJM00000000570" in {
+      val result = controller.getPartnerDetails("mGd", " XJM00000000570 ")(FakeRequest())
 
       status(result) shouldBe OK
 
       val json = contentAsJson(result)
 
-      (json \ "partners" \ 0 \ "mgdRegNumber").as[String]              shouldBe "XGM00000001762"
+      (json \ "partners" \ 0 \ "mgdRegNumber").as[String]              shouldBe "XJM00000000570"
       (json \ "partners" \ 0 \ "businessPartnerNumber").asOpt[String]  shouldBe Some("0100049899")
       (json \ "partners" \ 0 \ "businessName").as[String]              shouldBe "Partner1"
       (json \ "partners" \ 0 \ "countryOfIncorporation").asOpt[String] shouldBe Some("countryOfIncorporation")
@@ -89,8 +89,8 @@ class PartnerDetailsControllerSpec extends AnyWordSpec with Matchers with SpecBa
       )
     }
 
-    "return BadRequest for XGM00000000400" in {
-      val result = controller.getPartnerDetails("MGD", "XGM00000000400")(FakeRequest())
+    "return BadRequest for XGM00000000560" in {
+      val result = controller.getPartnerDetails("MGD", "XGM00000000560")(FakeRequest())
 
       status(result) shouldBe BAD_REQUEST
       contentAsJson(result) shouldBe Json.obj(
@@ -100,8 +100,8 @@ class PartnerDetailsControllerSpec extends AnyWordSpec with Matchers with SpecBa
 
     }
 
-    "return Unauthorized for XGM00000000401" in {
-      val result = controller.getPartnerDetails("MGD", "XGM00000000401")(FakeRequest())
+    "return Unauthorized for XMM00000000580" in {
+      val result = controller.getPartnerDetails("MGD", "XMM00000000580")(FakeRequest())
 
       status(result) shouldBe UNAUTHORIZED
       contentAsJson(result) shouldBe Json.obj(
@@ -111,8 +111,8 @@ class PartnerDetailsControllerSpec extends AnyWordSpec with Matchers with SpecBa
 
     }
 
-    "return InternalServerError for XGM00000000500" in {
-      val result = controller.getPartnerDetails("MGD", "XGM00000000500")(FakeRequest())
+    "return InternalServerError for XAM00000001090" in {
+      val result = controller.getPartnerDetails("MGD", "XAM00000001090")(FakeRequest())
 
       status(result) shouldBe INTERNAL_SERVER_ERROR
       contentAsJson(result) shouldBe Json.obj(
