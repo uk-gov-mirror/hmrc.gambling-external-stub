@@ -24,6 +24,8 @@ import java.time.LocalDate
 
 class PremisesDetailsSpec extends AnyWordSpec with Matchers {
 
+  private val fixedDate = LocalDate.parse("2026-01-01")
+
   "Premises Details JSON format" should {
 
     "serialize to JSON when defined" in {
@@ -35,7 +37,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address3     = Some("address3"),
         address4     = Some("address4"),
         postcode     = Some("L1 8YL"),
-        systemDate   = Some(LocalDate.now())
+        systemDate   = Some(fixedDate)
       )
 
       val json = Json.toJson(model)
@@ -47,7 +49,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         "address3"     -> "address3",
         "address4"     -> "address4",
         "postcode"     -> "L1 8YL",
-        "systemDate"   -> LocalDate.now()
+        "systemDate"   -> Some(fixedDate)
       )
     }
 
@@ -60,7 +62,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         "address3"     -> "address3",
         "address4"     -> "address4",
         "postcode"     -> "L1 8YL",
-        "systemDate"   -> LocalDate.now()
+        "systemDate"   -> Some(fixedDate)
       )
 
       val result = json.as[PremisesDetails]
@@ -72,7 +74,7 @@ class PremisesDetailsSpec extends AnyWordSpec with Matchers {
         address3     = Some("address3"),
         address4     = Some("address4"),
         postcode     = Some("L1 8YL"),
-        systemDate   = Some(LocalDate.now())
+        systemDate   = Some(fixedDate)
       )
     }
 

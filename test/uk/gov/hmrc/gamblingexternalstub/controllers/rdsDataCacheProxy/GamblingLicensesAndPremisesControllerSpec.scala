@@ -33,17 +33,17 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
 
   private val fixedDate = LocalDate.parse("2026-01-01")
 
-  "GamblingController#getPremisesDetails" should {
+  "GamblingLicensesAndPremisesController#getPremisesDetails" should {
 
     "return total rows for XGM00000001763" in {
-      val result = controller.getPremisesDetails("XGM00000001763")(FakeRequest())
+      val result = controller.getPremisesDetails("MGD","XGM00000001763")(FakeRequest())
 
       status(result)                                shouldBe OK
       (contentAsJson(result) \ "totalRows").as[Int] shouldBe 1000
     }
 
     "return premises details" in {
-      val result = controller.getPremisesDetails("GAM999")(FakeRequest())
+      val result = controller.getPremisesDetails("MGD","GAM999")(FakeRequest())
 
       status(result) shouldBe OK
       contentAsJson(result) shouldBe Json.toJson(
@@ -74,7 +74,7 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
     }
 
     "return nothing for XGM00000001764" in {
-      val result = controller.getPremisesDetails("XGM00000001764")(FakeRequest())
+      val result = controller.getPremisesDetails("MGD","XGM00000001764")(FakeRequest())
 
       status(result) shouldBe OK
       contentAsJson(result) shouldBe Json.toJson(
@@ -87,15 +87,21 @@ class GamblingLicensesAndPremisesControllerSpec extends AnyWordSpec with Matcher
     }
 
     "return BAD_REQUEST for invalid" in {
-      val result = controller.getPremisesDetails("invalid")(FakeRequest())
+      val result = controller.getPremisesDetails("MGD","invalid")(FakeRequest())
 
       status(result) shouldBe BAD_REQUEST
     }
 
     "return INTERNAL_SERVER_ERROR for error" in {
-      val result = controller.getPremisesDetails("error")(FakeRequest())
+      val result = controller.getPremisesDetails("MGD","error")(FakeRequest())
 
       status(result) shouldBe INTERNAL_SERVER_ERROR
+    }
+
+    "return BAD_REQUEST for error" in {
+      val result = controller.getPremisesDetails("GTR", "XGM00000001764")(FakeRequest())
+
+      status(result) shouldBe BAD_REQUEST
     }
   }
 
